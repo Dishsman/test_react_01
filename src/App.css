@@ -1,0 +1,133 @@
+.bg {
+  height: 100vh;
+  display: flex
+;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(39, 35, 35) !important;
+    z-index: 1 
+}
+body {
+  margin: 0px;
+}
+/* .table {
+ display: flex; 
+ background-color: rgb(253, 254, 255);
+} */
+h1{
+  display: flex
+  ;
+  justify-content: center;
+  align-items: center;
+  color: rgb(37, 98, 151);
+  z-index: 1;
+  position: relative;
+
+}
+.table {
+/* background-color: aliceblue; */
+height: 970px;
+width: 1000px;
+display: flex
+;
+justify-content: center;
+align-items: center;
+
+}
+.table-is-real{
+   background-color: blueviolet; /*พื้นที่padding? */
+   /* position: relative; */
+   overflow: hidden;
+  
+   
+}
+.ant-table-container{
+  background-color: blue; /**/
+}
+.ant-table-cell{
+  background-color: aquamarine;
+  width: 100px;
+  height: 100px; /*ขยายได้แต่ไม่ทะลุdiv ขยาย divก็ไม่กว้างขึ้น*/
+}
+.ant-table-wrapper { /*ขยายตารางแต่ไปแค่ header*/
+  width: 1000px;        /* Make sure the table takes up full width */
+  max-width: 1200px;  /* Optional: limit max width */
+  margin: 20px auto;  /* Center the table horizontally */
+  padding: 10px;      /* Optional: add padding around the table */
+}
+.ant-table th.ant-table-cell{ /*header only*/
+  background-color: red;
+}
+.select{
+  /* position:absolute; */
+  position: relative;
+  right: 873px;
+  bottom:290px;
+  height:40px;
+}
+.headline{ /*cars*/
+  position:relative;
+ bottom:350px;
+  right: 1000px;
+  color: azure;
+} 
+.ant-select-single .ant-select-selector{
+  box-sizing: border-box;
+}/*ช่องsearchประเทศ*/
+/* .ant-select-selection{
+  position: relative;
+    right: 378px;
+    bottom: 451px;
+} */
+/* .test {
+  background-color: red;
+} */
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+} */
+.search_name{
+  position: relative;
+  bottom: 290px;
+  right: 620px;
+  height: 40px;
+ 
+}
