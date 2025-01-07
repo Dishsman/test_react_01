@@ -9,6 +9,7 @@
 }
 body {
   margin: 0px;
+  
 }
 /* .table {
  display: flex; 
@@ -48,6 +49,8 @@ align-items: center;
   background-color: rgb(240, 240, 240);
   width: 100px;
   height: 100px; /*ขยายได้แต่ไม่ทะลุdiv ขยาย divก็ไม่กว้างขึ้น*/
+  border: 2px solid white;
+  border-radius: 0;
 }
 .ant-table-wrapper { /*ขยายตารางแต่ไปแค่ header*/
   width: 1000px;        /* Make sure the table takes up full width */
@@ -84,6 +87,7 @@ align-items: center;
 } 
 .ant-select-single .ant-select-selector{
   box-sizing: border-box;
+  border-radius: 0;
 }/*ช่องsearchประเทศ*/
 /* .ant-select-selection{
   position: relative;
@@ -165,4 +169,17 @@ align-items: center;
 }
 .ant-input{
   font-size: 20px;
+  border-radius: 0;
 }
+.ant-table-wrapper .ant-table-thead >tr>th{
+  background-color: rgb(240, 240, 240);
+  border: 2px solid white;
+  border-radius: 0;
+}
+.ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:last-child {
+  border-radius: 0;
+}
+.ant-table-wrapper .ant-table-container table>thead>tr:first-child >*:first-child {
+  border-radius: 0;
+}
+

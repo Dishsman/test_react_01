@@ -46,7 +46,7 @@ const App = () => {
 
   const columns = [
     {
-      title: "name", //ชื่อ  title
+      title: "Name", //ชื่อ  title
       dataIndex: "make_id", //พวก john doe, jane smith (ข้อมูลข้างใน)
       key: "name",
       // width: 300, ไม่work
@@ -62,7 +62,7 @@ const App = () => {
     //   key: 'address',
     // },
     {
-      title: "country",
+      title: "Country",
       dataIndex: "make_country",
       key: "country",
     },
@@ -166,10 +166,23 @@ const App = () => {
         car.make_display.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
+    // if (!selected && !searchTerm) {
+    //   filtered = cars;
+    // }
 
+  //   if ((selected || searchTerm) && filtered.length < 5) {
+  //   while (filtered.length < 5) {
+  //     filtered.push({
+  //       make_id: "",
+  //       make_display: "",
+  //       make_is_common: "",
+  //       make_country: "",
+  //     });
+  //   }
+  // }
     setFilteredCars(filtered); // Set the filtered cars to state
   }, [selected, cars, searchTerm]);
-
+  
   // Map over the filtered cars to log their details   (use)
   // const usfilter = usCars.map((car) => ({
   //   make_display: car.make_display,
@@ -197,10 +210,11 @@ const App = () => {
               pageSize: 5, // Limit to 5 rows per page
               total: filteredCars.length, // Total number of filtered cars
               onChange: handlePageChange, // Handle page change
+              showSizeChanger: false,
+              hideOnSinglePage: true,
             }}
-            locale={{
-    emptyText: "No cars available", // Custom message when no data
-  }}
+            
+            
           />
           <Space wrap className="select">
             <Select
