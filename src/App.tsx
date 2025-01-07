@@ -67,12 +67,12 @@ const App = () => {
       key: "country",
     },
   ];
-  const carList = cars.map((car) => (
-    <div key={car.make_id}>
-      <h3>{car.make_display}</h3>
-      <p>Country: {car.make_country}</p>
-    </div>
-  ));
+  // const carList = cars.map((car) => (
+  //   <div key={car.make_id}>
+  //     <h3>{car.make_display}</h3>
+  //     <p>Country: {car.make_country}</p>
+  //   </div>
+  // ));
   // const data = [
   //   {
   //     key: '1',
@@ -103,13 +103,13 @@ const App = () => {
     /*pagination ใช้*/
     setCurrentPage(page); // Update current page
   };
-  const [buttonClicked, setButtonClicked] = useState<boolean>(false);
-  const handleButtonClick = () => {
-    setButtonClicked(true);
-  };
-  const handleButtonClick2 = () => {
-    setButtonClicked((prevState) => !prevState);
-  };
+  // const [buttonClicked, setButtonClicked] = useState<boolean>(false);
+  // const handleButtonClick = () => {
+  //   setButtonClicked(true);
+  // };
+  // const handleButtonClick2 = () => {
+  //   setButtonClicked((prevState) => !prevState);
+  // };
   //ไม่ใช้   const usaCars = cars.filter(car => car.make_country === 'USA');
   // const [usfilter,setUsfilter] = usaCars.map((car) => ( {car: car.make_id}
   // <div key={car.make_id}>
@@ -194,16 +194,19 @@ const App = () => {
             className="table-is-real"
             pagination={{
               current: currentPage, // Track the current page
-              pageSize: 3, // Limit to 5 rows per page
+              pageSize: 5, // Limit to 5 rows per page
               total: filteredCars.length, // Total number of filtered cars
               onChange: handlePageChange, // Handle page change
             }}
+            locale={{
+    emptyText: "No cars available", // Custom message when no data
+  }}
           />
           <Space wrap className="select">
             <Select
               value={selected}
               // defaultValue="John Doe" ตัด ออกให้เห็น search
-              style={{ width: 130 }}
+              style={{ width: 200, height: 50 }}
               onChange={handleChange}
               allowClear
               options={[
@@ -232,7 +235,7 @@ const App = () => {
                 { value: "usa", label: "USA" },
                 { value: "disabled", label: "Disabled", disabled: true },
               ]}
-              placeholder="select-country"
+              placeholder="Select-Country"
             />
 
             {/* <Select
@@ -248,21 +251,22 @@ const App = () => {
           <h2> Cars</h2>
         </div>
         <div className="search_name" /*style={{ width: 130 }}*/>
+         
           <Input
-            placeholder="Search by name"
+            placeholder="Search Name"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)} // Update search term
-            style={{ width: 200 }}
+            style={{ width: 200, height: 50,}}
           />
         </div>
       </div>
-      <p>{buttonClicked ? "Button was clicked!" : "Please click the button"}</p>
+      {/* <p>{buttonClicked ? "Button was clicked!" : "Please click the button"}</p>
       <button onClick={handleButtonClick}>Click กู</button>
       <button onClick={handleButtonClick2}>Click กู</button>
       <h1>
         xd gg u noob 4
-      </h1>
-      <div>{carList}</div>;
+      </h1> */}
+      {/* <div>{carList}</div>; */}
       {/* <div> {filter}</div> */}
     </>
   );

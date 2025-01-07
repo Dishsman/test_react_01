@@ -4,7 +4,7 @@
 ;
     justify-content: center;
     align-items: center;
-    background-color: rgb(39, 35, 35) !important;
+    background-color: rgb(200, 220, 240) !important;
     z-index: 1 
 }
 body {
@@ -35,7 +35,7 @@ align-items: center;
 
 }
 .table-is-real{
-   background-color: blueviolet; /*พื้นที่padding? */
+   /* background-color: blueviolet; พื้นที่padding? */
    /* position: relative; */
    overflow: hidden;
   
@@ -45,7 +45,7 @@ align-items: center;
   background-color: blue; /**/
 }
 .ant-table-cell{
-  background-color: aquamarine;
+  background-color: rgb(240, 240, 240);
   width: 100px;
   height: 100px; /*ขยายได้แต่ไม่ทะลุdiv ขยาย divก็ไม่กว้างขึ้น*/
 }
@@ -61,15 +61,26 @@ align-items: center;
 .select{
   /* position:absolute; */
   position: relative;
-  right: 873px;
-  bottom:290px;
+  right: 790px;
+  bottom:380px;
   height:40px;
+}
+/* .select input::placeholder{  ใช้ไม่ได้มันไม่มี inputแบบsearch
+  text-align: center;
+  line-height: 50px;
+} */
+.select .ant-select-selection-placeholder {
+  /* text-align: center; 
+  line-height: 50px; */
+  font-size: 20px;   
+  color: black;  
 }
 .headline{ /*cars*/
   position:relative;
- bottom:350px;
+ bottom:450px;
   right: 1000px;
-  color: azure;
+  color: rgb(0, 0, 0);
+  font-size: 25px;
 } 
 .ant-select-single .ant-select-selector{
   box-sizing: border-box;
@@ -126,8 +137,32 @@ align-items: center;
 } */
 .search_name{
   position: relative;
-  bottom: 290px;
+  bottom: 374px;
   right: 620px;
+}
+.search_name input::placeholder {
+  /*text-align: center;  Centers placeholder text horizontally */
+  /*line-height: 50px;    Adjust to vertically center the text (match the height of the input) */
+  font-size: 20px;
+  color: black;  
+}
+.ant-select-show-search .ant-select-selector {
+  display: none;
+}
+.ant-pagination .ant-pagination-item{
   height: 40px;
- 
+  width: 60px;
+  background-color: rgb(210, 210, 210);
+  margin-inline-end: 0px;
+  border: 2px solid white;
+  border-radius: 0;
+  display: flex;
+  justify-content:flex-start; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+.ant-select-selection-item{
+  font-size: 20px;
+}
+.ant-input{
+  font-size: 20px;
 }
