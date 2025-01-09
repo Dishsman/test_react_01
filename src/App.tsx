@@ -1,5 +1,5 @@
 import "./App.css";
-import { Select, Space, Table, Input } from "antd";
+import { Select, Space, Table, Input, Pagination } from "antd";
 import { useEffect, useState } from "react";
 interface IData {
   make_id: string;
@@ -17,6 +17,9 @@ const App = () => {
   console.log(cars.length > 0 ? cars[0].make_country : "ggez"); //หลัง ? เป็น true หลัง  : เป็น false ต้องทำเพราะ fletch ไม่ทันมันจะพัง (ก่อน?คือเงื่อนไข หลัง?คือeffect หลัง:คือeffectถ้าไม่สำเร็จเงื่อนไข)
   //ex console.log cars[0].make_country อันนี้ ถ้าfail console.log "ggez" อันนี้
   const [searchTerm, setSearchTerm] = useState<string>("");
+  // const meow = cars.map((car)=> {return car.make_country}); //ใช้ได้แต่ข้อมูลซ้ำ
+  const meow = Array.from(new Set(cars.map((car) => car.make_country)));
+  const sortedMeow = meow.sort((a, b) => a.localeCompare(b));
   useEffect(() => {
     // setSelected("1")
     // ฟังก์ชันที่จะดึงข้อมูลจาก API
@@ -170,19 +173,31 @@ const App = () => {
     //   filtered = cars;
     // }
 
-  //   if ((selected || searchTerm) && filtered.length < 5) {
-  //   while (filtered.length < 5) {
-  //     filtered.push({
-  //       make_id: "",
-  //       make_display: "",
-  //       make_is_common: "",
-  //       make_country: "",
-  //     });
-  //   }
-  // }
+    //   if ((selected || searchTerm) && filtered.length < 5) {
+    //   while (filtered.length < 5) {
+    //     filtered.push({
+    //       make_id: "",
+    //       make_display: "",
+    //       make_is_common: "",
+    //       make_country: "",
+    //     });
+    //   }
+    // }
+    // if (filtered.length < 5) {
+    //   const emptyRowsCount = 5 - filtered.length;
+    //   const emptyRows = Array.from({ length: emptyRowsCount }, (_, index) => ({
+    //     make_id: `${index + 1}`, // Unique key for empty row
+    //     make_display: "",
+    //     make_is_common: "",
+    //     make_country: "",
+    //   }));
+
+    //   // Add empty rows to make up to 5
+    //   filtered = [...filtered, ...emptyRows];
+    // }
     setFilteredCars(filtered); // Set the filtered cars to state
   }, [selected, cars, searchTerm]);
-  
+
   // Map over the filtered cars to log their details   (use)
   // const usfilter = usCars.map((car) => ({
   //   make_display: car.make_display,
@@ -194,96 +209,194 @@ const App = () => {
   //     console.log({ limitedUsFilter });
   //   }
   // }, [selected, cars]); // Track both `selected` and `cars` for changes
-  return (
-    <>
-      <div
-        className="bg" /*style={{background:"red",width:"100vw",height:"100vh"}}*/
-      >
-        <div className="table">
-          <Table
-            columns={columns}
-            dataSource={filteredCars}
-            rowKey="make_id"
-            className="table-is-real"
-            pagination={{
-              current: currentPage, // Track the current page
-              pageSize: 5, // Limit to 5 rows per page
-              total: filteredCars.length, // Total number of filtered cars
-              onChange: handlePageChange, // Handle page change
-              showSizeChanger: false,
-              hideOnSinglePage: true,
-            }}
-            
-            
-          />
-          <Space wrap className="select">
-            <Select
-              value={selected}
-              // defaultValue="John Doe" ตัด ออกให้เห็น search
-              style={{ width: 200, height: 50 }}
-              onChange={handleChange}
-              allowClear
-              options={[
-                // { value: 'france', label: 'france' },
-                // { value: 'china', label: 'china' },
-                // { value: 'usa', label: 'usa' },
-                { value: "australia", label: "Australia" },
-                { value: "austria", label: "Austria" },
-                { value: "china", label: "China" },
-                { value: "czech republic", label: "Czech Republic" },
-                { value: "denmark", label: "Denmark" },
-                { value: "france", label: "France" },
-                { value: "germany", label: "Germany" },
-                { value: "india", label: "India" },
-                { value: "italy", label: "Italy" },
-                { value: "japan", label: "Japan" },
-                { value: "malaysia", label: "Malaysia" },
-                { value: "russia", label: "Russia" },
-                { value: "serbia", label: "Serbia" },
-                { value: "south korea", label: "South Korea" },
-                { value: "sweden", label: "Sweden" },
-                { value: "switzerland", label: "Switzerland" },
-                { value: "taiwan", label: "Taiwan" },
-                { value: "uk", label: "UK" },
-                { value: "ukraine", label: "Ukraine" },
-                { value: "usa", label: "USA" },
-                { value: "disabled", label: "Disabled", disabled: true },
-              ]}
-              placeholder="Select-Country"
-            />
 
-            {/* <Select
-        defaultValue="John Doe"
-        style={{ width: 120 }}
-        disabled
-        options={[{ value: 'John Doe', label: 'John Doe' }
-        ]}
-      />  */}
-          </Space>
-        </div>
-        <div className="headline">
-          <h2> Cars</h2>
-        </div>
-        <div className="search_name" /*style={{ width: 130 }}*/>
-         
-          <Input
-            placeholder="Search Name"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update search term
-            style={{ width: 200, height: 50,}}
-          />
-        </div>
+  // return (
+  //   <>
+  //     <div
+  //       className="bg" /*style={{background:"red",width:"100vw",height:"100vh"}}*/
+  //     >
+  //       <div className="table">
+  //         <Table
+  //           columns={columns}
+  //           dataSource={filteredCars} 
+  //           rowKey="make_id"
+  //           className="table-is-real"
+  //           pagination={{
+  //             current: currentPage, // Track the current page
+  //             pageSize: 5, // Limit to 5 rows per page
+  //             total: filteredCars.length, // Total number of filtered cars
+  //             onChange: handlePageChange, // Handle page change
+  //             showSizeChanger: false,
+  //             hideOnSinglePage: true,
+  //           }}
+
+
+  //         />
+  //         <Space wrap className="select">
+  //           <Select
+  //             value={selected}
+  //             // defaultValue="John Doe" ตัด ออกให้เห็น search
+  //             style={{ width: 200, height: 50 }}
+  //             onChange={handleChange}
+  //             allowClear
+  //             options={[
+  //               // { value: 'france', label: 'france' },
+  //               // { value: 'china', label: 'china' },
+  //               // { value: 'usa', label: 'usa' },
+  //               { value: "australia", label: "Australia" },
+  //               { value: "austria", label: "Austria" },
+  //               { value: "china", label: "China" },
+  //               { value: "czech republic", label: "Czech Republic" },
+  //               { value: "denmark", label: "Denmark" },
+  //               { value: "france", label: "France" },
+  //               { value: "germany", label: "Germany" },
+  //               { value: "india", label: "India" },
+  //               { value: "italy", label: "Italy" },
+  //               { value: "japan", label: "Japan" },
+  //               { value: "malaysia", label: "Malaysia" },
+  //               { value: "russia", label: "Russia" },
+  //               { value: "serbia", label: "Serbia" },
+  //               { value: "south korea", label: "South Korea" },
+  //               { value: "sweden", label: "Sweden" },
+  //               { value: "switzerland", label: "Switzerland" },
+  //               { value: "taiwan", label: "Taiwan" },
+  //               { value: "uk", label: "UK" },
+  //               { value: "ukraine", label: "Ukraine" },
+  //               { value: "usa", label: "USA" },
+  //               { value: "disabled", label: "Disabled", disabled: true },
+  //             ]}
+  //             placeholder="Select-Country"
+  //           />
+
+  //           {/* <Select
+  //       defaultValue="John Doe"
+  //       style={{ width: 120 }}
+  //       disabled
+  //       options={[{ value: 'John Doe', label: 'John Doe' }
+  //       ]}
+  //     />  */}
+  //         </Space>
+  //       </div>
+  //       <div className="headline">
+  //         <h2> Cars</h2>
+  //       </div>
+  //       <div className="search_name" /*style={{ width: 130 }}*/>
+
+  //         <Input
+  //           placeholder="Search Name"
+  //           value={searchTerm}
+  //           onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+  //           style={{ width: 200, height: 50,}}
+  //         />
+  //       </div>
+  //     </div>
+  //     {/* <p>{buttonClicked ? "Button was clicked!" : "Please click the button"}</p>
+  //     <button onClick={handleButtonClick}>Click กู</button>
+  //     <button onClick={handleButtonClick2}>Click กู</button>
+  //     <h1>
+  //       xd gg u noob 4
+  //     </h1> */}
+  //     {/* <div>{carList}</div>; */}
+  //     {/* <div> {filter}</div> */}
+  //   </>
+  // );
+  return (
+    <div id="bg" style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: 'rgb(200, 220, 240)'}}>
+      <div id="headline" style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        gap:940,
+        height: 80,
+      }}>
+        <div style={{fontSize: '30px',}}>car</div>
+        <div> </div>
       </div>
-      {/* <p>{buttonClicked ? "Button was clicked!" : "Please click the button"}</p>
-      <button onClick={handleButtonClick}>Click กู</button>
-      <button onClick={handleButtonClick2}>Click กู</button>
-      <h1>
-        xd gg u noob 4
-      </h1> */}
-      {/* <div>{carList}</div>; */}
-      {/* <div> {filter}</div> */}
-    </>
-  );
+      <div id="upper-div" style={{
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '579px',
+        justifyContent: "center",
+        alignItems: "flex-end",
+        position: 'relative'
+      }}>
+        {/* <div style={{
+          position:'absolute',
+          fontSize: 30,
+        }}>
+          car
+        </div> */}
+        <Select
+          value={selected}
+          style={{ width: 200, height: 50,borderRadius: 0,}}
+          onChange={handleChange}
+          allowClear
+          options={sortedMeow.map((country) => (
+            {
+            value: country,
+            label: country,
+            }))
+            /*[
+            { value: "australia", label: "Australia" },
+            { value: "austria", label: "Austria" },
+            { value: "china", label: "China" },
+            { value: "czech republic", label: "Czech Republic" },
+            { value: "denmark", label: "Denmark" },
+            { value: "france", label: "France" },
+            { value: "germany", label: "Germany" },
+            { value: "india", label: "India" },
+            { value: "italy", label: "Italy" },
+            { value: "japan", label: "Japan" },
+            { value: "malaysia", label: "Malaysia" },
+            { value: "russia", label: "Russia" },
+            { value: "serbia", label: "Serbia" },
+            { value: "south korea", label: "South Korea" },
+            { value: "sweden", label: "Sweden" },
+            { value: "switzerland", label: "Switzerland" },
+            { value: "taiwan", label: "Taiwan" },
+            { value: "uk", label: "UK" },
+            { value: "ukraine", label: "Ukraine" },
+            { value: "usa", label: "USA" },
+            { value: "disabled", label: "Disabled", disabled: true },
+          ]*/
+         }
+          placeholder="Select-Country"
+        />
+        <Input
+          placeholder="Search Name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+          style={{ width: 200, height: 50, borderRadius: 0, }}
+        />
+      </div>
+      <div id="table" style={{ height: 691.83, color: 'white', position: 'relative' }}>
+        <Table
+          columns={columns}
+          dataSource={filteredCars}
+          rowKey="make_id"
+          className="table-is-real"
+
+          pagination={{
+            position: ['none'],
+            current: currentPage, // Track the current page
+            pageSize: 5, // Limit to 5 rows per page
+            total: filteredCars.length, // Total number of filtered cars
+            onChange: handlePageChange, // Handle page change
+            showSizeChanger: false,
+            hideOnSinglePage: true,
+          }}
+        />
+        <Pagination current={currentPage} pageSize={5} total={filteredCars.length} onChange={handlePageChange} showSizeChanger={false} hideOnSinglePage={false}
+          style={{
+            position:
+              'absolute',
+            bottom: 0,
+            left: '51%'
+          }}
+        />;
+      </div>
+    </div>
+  )
 };
 
 export default App;

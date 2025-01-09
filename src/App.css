@@ -4,17 +4,14 @@
 ;
     justify-content: center;
     align-items: center;
-    background-color: rgb(200, 220, 240) !important;
+    background-color: rgb(200, 220, 240);
     z-index: 1 
 }
 body {
   margin: 0px;
   
 }
-/* .table {
- display: flex; 
- background-color: rgb(253, 254, 255);
-} */
+
 h1{
   display: flex
   ;
@@ -26,7 +23,7 @@ h1{
 
 }
 .table {
-/* background-color: aliceblue; */
+
 height: 970px;
 width: 1000px;
 display: flex
@@ -36,8 +33,7 @@ align-items: center;
 
 }
 .table-is-real{
-   /* background-color: blueviolet; พื้นที่padding? */
-   /* position: relative; */
+  
    overflow: hidden;
   
    
@@ -167,10 +163,10 @@ align-items: center;
 .ant-select-selection-item{
   font-size: 20px;
 }
-.ant-input{
+/* .ant-input{
   font-size: 20px;
   border-radius: 0;
-}
+} */
 .ant-table-wrapper .ant-table-thead >tr>th{
   background-color: rgb(240, 240, 240);
   border: 2px solid white;
@@ -183,3 +179,12 @@ align-items: center;
   border-radius: 0;
 }
 
+/* .upper-div{
+  display: flex
+  ;
+      flex-direction: row;
+      gap: 579px;
+      justify-content: center;
+      height: 100px;
+      align-items: flex-end;
+  } */
