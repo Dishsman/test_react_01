@@ -301,24 +301,30 @@ const App = () => {
   //   </>
   // );
   return (
-    <div id="bg" style={{ display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: 'rgb(200, 220, 240)'}}>
+    <div id="bg" style={{
+      display: 'flex', flexDirection: 'column', height: '100vh', backgroundColor: 'rgb(200, 220, 240)', alignItems: 'center',
+      justifyContent: 'center',
+    }}>
       <div id="headline" style={{
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',
-        gap:940,
+        gap: 940,
         height: 80,
+        width: 1000,
+        alignItems: "center"
       }}>
-        <div style={{fontSize: '30px',}}>car</div>
-        <div> </div>
+        <div style={{ fontSize: '30px', }}>car</div>
+        {/* <div> </div> */}
       </div>
       <div id="upper-div" style={{
         display: 'flex',
         flexDirection: 'row',
-        gap: '579px',
-        justifyContent: "center",
+        // gap: '579px',
+        justifyContent: 'space-between',
         alignItems: "flex-end",
-        position: 'relative'
+        position: 'relative',
+        width: 1000,
       }}>
         {/* <div style={{
           position:'absolute',
@@ -328,13 +334,13 @@ const App = () => {
         </div> */}
         <Select
           value={selected}
-          style={{ width: 200, height: 50,borderRadius: 0,}}
+          style={{ width: 200, height: 50, borderRadius: 0, }}
           onChange={handleChange}
           allowClear
           options={sortedMeow.map((country) => (
             {
-            value: country,
-            label: country,
+              value: country,
+              label: country,
             }))
             /*[
             { value: "australia", label: "Australia" },
@@ -359,7 +365,7 @@ const App = () => {
             { value: "usa", label: "USA" },
             { value: "disabled", label: "Disabled", disabled: true },
           ]*/
-         }
+          }
           placeholder="Select-Country"
         />
         <Input
@@ -369,12 +375,30 @@ const App = () => {
           style={{ width: 200, height: 50, borderRadius: 0, }}
         />
       </div>
-      <div id="table" style={{ height: 691.83, color: 'white', position: 'relative' }}>
-        <Table
+      <div id="table" style={{ height: 691.83, color: 'white', position: 'relative', width: 1000, }}>
+      {/* {filteredCars.length > 0 ? <Table
+          className="test-table"
           columns={columns}
           dataSource={filteredCars}
           rowKey="make_id"
-          className="table-is-real"
+          // className="table-is-real"
+
+          pagination={{
+            position: ['none'],
+            current: currentPage, // Track the current page
+            pageSize: 5, // Limit to 5 rows per page
+            total: filteredCars.length, // Total number of filtered cars
+            onChange: handlePageChange, // Handle page change
+            showSizeChanger: false,
+            hideOnSinglePage: true,
+          }}
+        /> : <>No data</>} */}
+        <Table
+          className="test-table"
+          columns={columns}
+          dataSource={filteredCars}
+          rowKey="make_id"
+          // className="table-is-real"
 
           pagination={{
             position: ['none'],
@@ -391,7 +415,8 @@ const App = () => {
             position:
               'absolute',
             bottom: 0,
-            left: '51%'
+            // left: '51%'
+            right: 0,
           }}
         />;
       </div>

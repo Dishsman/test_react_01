@@ -52,7 +52,7 @@ align-items: center;
   width: 1000px;        /* Make sure the table takes up full width */
   max-width: 1200px;  /* Optional: limit max width */
   margin: 20px auto;  /* Center the table horizontally */
-  padding: 10px;      /* Optional: add padding around the table */
+  padding: 0px;      /* Optional: add padding around the table */
 }
 .ant-table th.ant-table-cell{ /*header only*/
   background-color: red;
@@ -168,7 +168,7 @@ align-items: center;
   border-radius: 0;
 } */
 .ant-table-wrapper .ant-table-thead >tr>th{
-  background-color: rgb(240, 240, 240);
+  background-color: rgba(240, 240, 240, 1); /*rgba = opacity*/
   border: 2px solid white;
   border-radius: 0;
 }
